@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  medusa:
+    image: lscr.io/linuxserver/medusa
+    container_name: medusa
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+    - /mnt/main_hdd/srv/medusa:/config
+    - /mnt/main_hdd/media/incoming:/downloads
+    - /mnt/main_hdd/media/TV_Shows:/tv
+    ports:
+      - 8050:8081
+    restart: unless-stopped
+    network_mode: bridge

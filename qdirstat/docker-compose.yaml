@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  qdirstat:
+    image: lscr.io/linuxserver/qdirstat
+    container_name: qdirstat
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /mnt/main_hdd/srv/qdirstat:/config
+      - /mnt/main_hdd:/data
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    network_mode: bridge
